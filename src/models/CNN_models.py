@@ -21,6 +21,14 @@ class TSDataset(data.Dataset):
 				return len(self.samples)
 
 		def __getitem__(self,idx):
+                # ???: (suggested by GPT) x = self.samples[idx]
+                # ???: (suggested by GPT) y = self.labels[idx]
+                # ???: (suggested by GPT) x = torch.tensor(x, dtype=torch.float32)
+                # ???: (suggested by GPT) y = torch.tensor(y, dtype=torch.long)
+                # ???: (suggested by GPT) return x, y
+                # shape examples:
+                # - dCNN cube: (D, D, L)
+                # - cCNN line: (1, D, L) or similar
 				return self.samples[idx],self.labels[idx]
 
 
@@ -69,7 +77,7 @@ class ModelCNN():
 
 		def train(self,num_epochs,dataloader_cl1,dataloader_cl1_test,model_name='model',verbose=True):
 				epochs_no_improve = 0
-				min_val_loss = np.Inf
+				min_val_loss = np.inf
 				loss_train_history = []
 				loss_test_history = []
 				accuracy_test_history = []
