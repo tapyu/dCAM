@@ -223,7 +223,7 @@ class ConvNet2D(nn.Module):
 		def __init__(self,original_length,original_dim,nb_channel,num_classes=10):
 				super(ConvNet2D, self).__init__()
 				
-				self.kernel_size = (1,3)
+				self.kernel_size = (1,3) # NOTE: it only specifies the 2D spatial footprint: height and width. The depth dimension (Cin) is not passed. So the kernel is in fact 3D per filter (Cin,Kh,Kw), but PyTorch lets you think only about the sliding part (2D), because the depth handling is automatic.
 				self.padding = (0,1)
 				self.num_class = num_classes
 				
